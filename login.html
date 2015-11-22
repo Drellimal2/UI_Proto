@@ -1,0 +1,45 @@
+<html>
+	<head>
+		<link href='https://fonts.googleapis.com/css?family=Sigmar+One' rel='stylesheet' type='text/css'>
+		<script src="angular/angular.js"></script>
+        <script src="angular/ui-bootstrap-tpls-0.11.2.js"></script>
+        
+        <!-- Bootstrap -->
+        <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css" />
+        <script src="bootstrap/js/jquery-2.1.4.min.js"></script>
+        <script src="bootstrap/js/bootstrap.min.js"></script>
+		<script src="bootstrap/js/jquery-ui.min.js"></script>
+		<script src="bootstrap/js/jquery.min.js"></script>
+        <link href=' http://fonts.googleapis.com/css?family=Droid+Sans' rel='stylesheet' type='text/css'> 
+		<link href='/stylesheets/main.css' rel="stylesheet">
+	</head>
+	<body class='wrapper col-md-12'>
+		<div id='book' class='container col-md-8'>
+			<p>
+				<div id="lining"></div>
+					<div id="content">
+						<div id="name">						
+							My Student Companion
+						</div>
+						<div ng-form="loginForm"
+							ng-class="{loginForm.user.$dirty && loginForm.user.$invalid || loginForm.password.$dirty &&
+							loginForm.password.$invalid}">
+							<div class="form-group">
+								Username/Email:<br/>
+								<input type=text
+									name="user"
+									class="form-control"/>
+								<hr>
+								Password:<br/>
+								<input type=password
+									name="password"
+									class="form-control"/>	<br/>
+							<a class="button btn btn-default"  href="/main.html" ng-disabled="loginForm.$invalid">Sign in</a> <button class="btn btn-default">Register</button>
+						</div>
+					</div>
+				</div>
+			</p>
+		</div>
+		
+	</body>
+</html>

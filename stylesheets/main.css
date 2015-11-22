@@ -1,0 +1,40 @@
+#book{
+	
+	background-color: #afaf80;
+	height: 100%;
+	width: 400px;
+	margin: 0 auto;
+	padding-top: 0px;
+/*	overflow: hidden;*/
+}
+
+#lining{
+	
+	background-color: #9f9f60;
+	height: 100%;
+	width: 4px;
+	margin-left: 7px;
+	margin-top: 0px;
+	float:left;
+}
+
+#content{
+	
+	width: 80%;
+	height: 70%;
+	overflow: hidden;
+	margin: 0 auto;
+}
+
+#name{
+	font-family: 'Sigmar One', cursive;
+	color: #ffffff;
+	font-size: 40px;
+	margin-bottom: 50px;
+}
+
+#home > a{
+	background-color: #67f398;
+	border-bottom-color: #000000;
+	
+}
