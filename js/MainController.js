@@ -4,7 +4,7 @@ app.controller('MainCtrl', ['$scope', function ($scope) {
 	$scope.tabs = [
 		{
 			name: 'Schedule',
-			hidden: true
+			hidden: false
 			
 		},
 		{

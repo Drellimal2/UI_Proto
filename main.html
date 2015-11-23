@@ -19,14 +19,15 @@
 	</head>
 	<body class='wrapper col-md-12' ng-controller="MainCtrl">
 		<div id='openbook' class='container col-md-8' >
+<!--
 			<uib-tabset>
 				<uib-tab ng-repeat="tab in tabs" heading="{{tab.name}}" active="tab.hidden" ></uib-tab>
 			</uib-tabset>
-<!--
-			<ul class="nav nav-tabs">
-			  <li role="presentation" class="active"  ng-repeat="tab in tabs"  >{{ tab.name }}</li>
-			</ul>
 -->
+			<ul class="nav nav-tabs">
+  <li role="presentation" class="active" id='{{tab.name}}' ng-repeat="tab in tabs"><a href="#">{{tab.name}}</a></li>
+  
+</ul>
 		</div>
 		
 	</body>
