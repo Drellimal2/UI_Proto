@@ -10,11 +10,21 @@
         <script src="bootstrap/js/jquery-2.1.4.min.js"></script>
         <script src="bootstrap/js/bootstrap.min.js"></script>
 		<script src="bootstrap/js/jquery-ui.min.js"></script>
+		
 		<script src="bootstrap/js/jquery.min.js"></script>
        <script src="js/app.js"></script>
-       <script src="js/MainController.js"></script>
-        <link href=' http://fonts.googleapis.com/css?family=Droid+Sans' rel='stylesheet' type='text/css'> 
-         <link href='/stylesheets/main.css' rel="stylesheet">
+       <link href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.6/moment.js"></script>
+<script src="http://arshaw.com/js/fullcalendar-1.5.4/fullcalendar/fullcalendar.min.js"></script>
+<link href="http://arshaw.com/js/fullcalendar-1.5.4/fullcalendar/fullcalendar.css" rel="stylesheet">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+<script src="js/jquery.minicolors.js"></script>
+<link rel="stylesheet" href="js/jquery.minicolors.css">
+<script src="js/angularminicolors.js"></script>
+        <link href="http://fonts.googleapis.com/css?family=Droid+Sans" rel="stylesheet" type="text/css"> 
+         <link href="stylesheets/main.css" rel="stylesheet">
+         <script src="js/calendar.js"></script>
+                <script src="js/MainController.js"></script>
 
 	</head>
 	<body class='wrapper col-md-12' ng-controller="MainCtrl">
@@ -38,10 +48,12 @@
                 <div ng-if="selected==0">
                     <div class="container">
                         <h3>Hello, {{fullname}} !</h3>
-                        <h4 class="text-right">{{assignmentcount}} Assignments Due</h4>
+                                                <h4 class="text-right">{{assignmentcount}} Assignments Due</h4>
                         <h4 class="text-right">{{testcount}} Upcoming Tests</h4>
-                        <br>
                         <div class="calendar" ng-model="eventSources" calendar="calendar" config="uiConfig.calendar" ui-calendar="uiConfig.calendar"></div>
+
+                        <br>
+                        
                     </div>
                 </div>
                 <div ng-if="selected==1">
@@ -53,7 +65,7 @@
                                 Add Course
                             </div>
                         </div>
-                        <div class="container" style="background-image: url('js/paper.png');">
+                        <div class="container">
                             <br>
                             <div class="text-center" ng-if="courses.length==0">
                                 <h3>Nothing here, Try adding a course</h3>
