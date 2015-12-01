@@ -1,0 +1,71 @@
+<div class="modal-header">
+    <h3 class="modal-title">Add An Assignment</h3>
+</div>
+<div class="modal-body">
+        <div ng-form="assignmentform"
+        ng-class="{'has-error': assignmentform.course.$dirty && assignmentform.course.$invalid ||
+            assignmentform.assignmentdate.$dirty && assignmentform.assignmentdate.$invalid ||
+            assignmentform.assignmentdescription.$dirty && assignmentform.assignmentdescription.$invalid ||
+            assignmentform.state.$dirty && assignmentform.state.$invalid}">
+        <div class="form-group">
+            <label>Course Code</label>
+            <select
+                placeholder="Choose Course"
+                ng-model="assignmentcourse"
+                ng-options="course.coursecode for course in courselist"
+                name="course"
+                class="form-control"
+                required>
+            </select>
+        </div>
+        <div class="form-group">
+            <label>Due Date</label>
+            <div class="input-group">
+                <input ng-model="assignmentdue"
+                    type="text"
+                    class="form-control"
+                    datepicker-popup="{{format}}"
+                    name="assignmentdate"
+                    is-open="assignmentdateopened"
+                    datepicker-options="dateOptions"
+                    placeholder="Enter due date"
+                    close-text="Close"
+                    required>
+                <span class="input-group-btn">
+                   <button type="button"
+                        class="btn btn-default"
+                        ng-click="assignmentopencal($event)">
+                        <i class="fa fa-calendar"></i>
+                    </button>
+                </span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label>Assignment Description</label>
+            <input type="text"
+                placeholder="Enter assignment description"
+                ng-model="assignmentdescription"
+                name="assignmentdescription"
+                class="form-control"
+                required>
+        </div>
+        <div class="form-group">
+            <label>State</label>
+            <select
+                placeholder="Choose State"
+                ng-model="assignmentstate"
+                ng-init="option = options[0]"
+                ng-options="option for option in options"
+                name="state"
+                class="form-control"
+                required>
+            </select>
+        </div>
+    </div>
+</div>
+<div class="modal-footer">
+    <button class="btn btn-default"
+        ng-click="addAssignment()"
+        ng-disabled="assignmentform.$invalid">Save Assignment
+    </button>
+</div>

@@ -1,0 +1,81 @@
+<div class="modal-header">
+    <h3 class="modal-title">Add A Test</h3>
+</div>
+<div class="modal-body">
+        <div ng-form="testform"
+        ng-class="{'has-error': testform.course.$dirty && testform.course.$invalid ||
+            testform.testdate.$dirty && testform.testdate.$invalid ||
+            testform.testtime.$dirty && testform.testtime.$invalid ||
+            testform.testdescription.$dirty && testform.testdescription.$invalid ||
+            testform.state.$dirty && testform.state.$invalid}">
+        <div class="form-group">
+            <label>Course Code</label>
+            <select
+                placeholder="Choose Course"
+                ng-model="testcourse"
+                ng-options="course.coursecode for course in courselist"
+                name="course"
+                class="form-control"
+                required>
+            </select>
+        </div>
+        <div class="form-group">
+            <label>Date</label>
+            <div class="input-group">
+                <input ng-model="testdue"
+                    type="text"
+                    class="form-control"
+                    datepicker-popup="{{format}}"
+                    name="testdate"
+                    is-open="testdateopened"
+                    datepicker-options="dateOptions"
+                    placeholder="Enter date"
+                    close-text="Close"
+                    required>
+                <span class="input-group-btn">
+                   <button type="button"
+                        class="btn btn-default"
+                        ng-click="testopencal($event)">
+                        <i class="fa fa-calendar"></i>
+                    </button>
+                </span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label>Time</label>
+            <timepicker ng-model="testtime"
+                ng-change="changed()"
+                    hour-step="hstep"
+                    minute-step="mstep"
+                    name="testtime"
+                    show-meridian="ismeridian">
+            </timepicker>
+        <div class="form-group">
+            <label>Test Description</label>
+            <input type="text"
+                placeholder="Enter test description"
+                ng-model="testdescription"
+                name="testdescription"
+                class="form-control"
+                required>
+        </div>
+        <div class="form-group">
+            <label>State</label>
+            <select
+                placeholder="Choose State"
+                ng-model="teststate"
+                ng-init="option = options[0]"
+                ng-options="option for option in options"
+                name="state"
+                class="form-control"
+                required>
+            </select>
+        </div>
+    </div>
+</div>
+<div class="modal-footer">
+    <button class="btn btn-default"
+        ng-click="addTest()"
+        ng-disabled="testform.$invalid">Save Test
+    </button>
+</div>
