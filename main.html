@@ -1,17 +1,23 @@
 <html ng-app="UIPrototype">
 	<head>
 		<link href='https://fonts.googleapis.com/css?family=Sigmar+One' rel='stylesheet' type='text/css'>
-		<script src="angular/angular.js"></script>
-        <script src="angular/ui-bootstrap-tpls-0.11.2.js"></script>
-        
+		<!-- <script src="angular/angular.js"></script> -->
+        <!-- <script src="angular/ui-bootstrap-tpls-0.11.2.js"></script> -->
+
         <!-- Bootstrap -->
 
-        <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css" />
-        <script src="bootstrap/js/jquery-2.1.4.min.js"></script>
-        <script src="bootstrap/js/bootstrap.min.js"></script>
-		<script src="bootstrap/js/jquery-ui.min.js"></script>
-		
-		<script src="bootstrap/js/jquery.min.js"></script>
+        <!-- <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css" /> -->
+        <!-- <script src="bootstrap/js/jquery-2.1.4.min.js"></script> -->
+        <!-- <script src="bootstrap/js/bootstrap.min.js"></script> -->
+		<!-- <script src="bootstrap/js/jquery-ui.min.js"></script> -->
+
+		<!-- <script src="bootstrap/js/jquery.min.js"></script> -->
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+		<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1/jquery-ui.min.js"></script>
+		<link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/themes/ui-lightness/jquery-ui.min.css" rel="stylesheet" type="text/css" />
+		<link href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet">
+		<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.13/angular.js"></script>
+		<script src="//angular-ui.github.io/bootstrap/ui-bootstrap-tpls-0.13.0.js"></script>
        <script src="js/app.js"></script>
        <link href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.6/moment.js"></script>
@@ -21,43 +27,39 @@
 <script src="js/jquery.minicolors.js"></script>
 <link rel="stylesheet" href="js/jquery.minicolors.css">
 <script src="js/angularminicolors.js"></script>
-        <link href="http://fonts.googleapis.com/css?family=Droid+Sans" rel="stylesheet" type="text/css"> 
+        <link href="http://fonts.googleapis.com/css?family=Droid+Sans" rel="stylesheet" type="text/css">
          <link href="stylesheets/main.css" rel="stylesheet">
          <script src="js/calendar.js"></script>
                 <script src="js/MainController.js"></script>
 
 	</head>
-	<body class='wrapper col-md-12' ng-controller="MainCtrl">
-		<div id='openbook'>
+	<body class="wrapper col-md-12" ng-controller="MainCtrl">
+		<div id="openbook">
 		<div id="left_openbook" class="col-md-2">
 			<div id="left_openbook_pages">
-			
+
 			</div>
 		</div>
-<!--
-			<uib-tabset>
-				<uib-tab ng-repeat="tab in tabs" heading="{{tab.name}}" active="tab.hidden" ></uib-tab>
-			</uib-tabset>
--->
 		<div id="right_openbook" class="col-md-9">
 			<ul class="nav nav-tabs">
-  <li role="presentation" class="active" id='{{tab.name}}' ng-repeat="tab in tabs" ng-if="selected != tab.value"><a ng-click="setsel(tab.value)">{{tab.name}}</a></li>
-  
+  <li role="presentation" class="active" id='{{tab.name}}' style="padding-right:50px;" ng-repeat="tab in tabs" ng-if="selected != tab.value"><a ng-click="setsel(tab.value)">{{tab.name}}</a></li>
+
 </ul>
                <div id="right_open_book_content">
                 <div ng-if="selected==0">
-                    <div class="container">
-                        <h3>Hello, {{fullname}} !</h3>
-                                                <h4 class="text-right">{{assignmentcount}} Assignments Due</h4>
+                    <div class="container col-md-12">
+                        <h3>Hello, {{fullname}} !
+                            <h4 class="text-right">{{assignmentcount}} Assignments Due</h4>
                         <h4 class="text-right">{{testcount}} Upcoming Tests</h4>
+					</h3>
                         <div class="calendar" ng-model="eventSources" calendar="calendar" config="uiConfig.calendar" ui-calendar="uiConfig.calendar"></div>
 
                         <br>
-                        
+
                     </div>
                 </div>
                 <div ng-if="selected==1">
-                        <div class="container">
+                        <div class="container col-md-12">
                             <div class="pull-left">
                                 <h3>Courses</h3>
                             </div>
@@ -65,7 +67,7 @@
                                 Add Course
                             </div>
                         </div>
-                        <div class="container">
+                        <div class="container col-md-12">
                             <br>
                             <div class="text-center" ng-if="courses.length==0">
                                 <h3>Nothing here, Try adding a course</h3>
@@ -81,26 +83,12 @@
                                     <br>
                                     <h4>{{course.start}} - {{course.end}}</h4>
                                 </td>
-                                    <td class="text-right"
-                    					ng-click="editcourse(course.coursename,course.coursecode,course.description,course.start,course.end)">
-                    					<button class="btn btn-sm btn-success"
-                    						tooltip="Edit">
-                    						<i class="fa fa-pencil"></i>
-                    					</button>
-                    				</td>
-                                    <td class="text-right"
-                    					ng-click="deletecourse(courses,course)">
-                    					<button class="btn btn-sm btn-success"
-                    						tooltip="Delete">
-                    						<i class="fa fa-times"></i>
-                    					</button>
-                    				</td>
                                 </tr>
                             </table>
                     </div>
                 </div>
                 <div ng-if="selected==2">
-                    <div class="container">
+                    <div class="container col-md-12">
                         <div class="pull-left">
                             <h3>Assignments</h3>
                         </div>
@@ -108,7 +96,7 @@
                             Add Assignment
                         </div>
                     </div>
-                    <div class="container" style="background-image: url('js/paper.png');">
+                    <div class="container col-md-12">
                         <div class="text-center" ng-if="assignments.length==0">
                             <h3>Nothing here, Try adding an assignment</h3>
                             <br>
@@ -128,26 +116,12 @@
                                     <div class="pull-right" ng-style='{"background-color":assignment.colour,"width":(100)+"px","height":(10)+"px"}'></div>
                                 </h4>
                             </td>
-                                <td class="text-right"
-                                    ng-click="editassignment(assignment)">
-                                    <button class="btn btn-sm btn-success"
-                                        tooltip="Edit">
-                                        <i class="fa fa-pencil"></i>
-                                    </button>
-                                </td>
-                                <td class="text-right"
-                                    ng-click="deleteassignment(assignments,assignment)">
-                                    <button class="btn btn-sm btn-success"
-                                        tooltip="Delete">
-                                        <i class="fa fa-times"></i>
-                                    </button>
-                                </td>
                             </tr>
                         </table>
                     </div>
                 </div>
                 <div ng-if="selected==3">
-                    <div class="container">
+                    <div class="container col-md-12">
                         <div class="pull-left">
                             <h3>Tests</h3>
                         </div>
@@ -155,7 +129,7 @@
                             Add Test
                         </div>
                     </div>
-                    <div class="container" style="background-image: url('js/paper.png');">
+                    <div class="container col-md-12">
                         <br>
                         <div class="text-center" ng-if="tests.length==0">
                             <h3>Nothing here, Try adding a test</h3>
@@ -176,78 +150,99 @@
                                     <div class="pull-right" ng-style='{"background-color":test.colour,"width":(100)+"px","height":(10)+"px"}'></div>
                                 </h4>
                             </td>
-                                <td class="text-right"
-                                    ng-click="edittest(test)">
-                                    <button class="btn btn-sm btn-success"
-                                        tooltip="Edit">
-                                        <i class="fa fa-pencil"></i>
-                                    </button>
-                                </td>
-                                <td class="text-right"
-                                    ng-click="deletetest(tests,test)">
-                                    <button class="btn btn-sm btn-success"
-                                        tooltip="Delete">
-                                        <i class="fa fa-times"></i>
-                                    </button>
-                                </td>
                             </tr>
                         </table>
                     </div>
                 </div>
                 <div ng-if="selected==4">
-                    <div class="container">
+                    <div class="container col-md-12">
                         <div class="pull-left">
-                            <h3>Grades</h3>
-                            <h4>Cumulative GPA: {{GPA}}</h4>
-                        </div>
-                        <div class="btn btn-sm btn-primary pull-right" ng-click="gradeopen()"><i class="fa fa-plus"></i>
-                            Add Grade
+                            <h3>GPA</h3>
                         </div>
                     </div>
-                    <div class="container" style="background-image: url('js/paper.png');">
+                    <div class="container col-md-12">
+						<div class="pull-center text-center"><h1>4.0</h1><h4>GPA</h4></div>
+						<div class="pull-left">
+							<h4>Cumulative GPA: 3.7</h4>
+							<h4>Other Stats</h4>
+						</div>
                         <br>
-                        <div class="text-center" ng-if="grades.length==0">
-                            <h3>Nothing here, Try adding a grade</h3>
-                            <br>
-                        </div>
-                        <table class="table" ng-if="grades.length!=0">
-                        <tr ng-repeat="grade in grades | orderBy: 'grade.coursecode'">
-                            <td ng-style='{"background-color":grade.coursecolour,"width":(10)+ "px"}'>
-                            </td>
-                            <td> <h4>{{grade.coursecode}}</h4>
-                                <br>
-                                <h4>{{grade.coursename}}
-                                <div class="pull-right">{{grade.grade.letter}}</div></h4>
-                                <br>
-                            </td>
-                                <td class="text-right"
-                                    ng-click="editgrade(grade)">
-                                    <button class="btn btn-sm btn-success"
-                                        tooltip="Edit">
-                                        <i class="fa fa-pencil"></i>
-                                    </button>
-                                </td>
-                                <td class="text-right"
-                                    ng-click="deletegrade(grades,grade)">
-                                    <button class="btn btn-sm btn-success"
-                                        tooltip="Delete">
-                                        <i class="fa fa-times"></i>
-                                    </button>
-                                </td>
-                            </tr>
-                        </table>
-                    </div>
-                </div>
-                </div>
-<!--
-                <tab heading="Settings">
-                    <div>
-                    </div>
-                </tab>
--->
-                
-            
+						<br>
+						<br>
+						<br>
+
 		</div>
 		</div>
+		<div ng-if="selected==5">
+			<div class="container col-md-12">
+				<div class="pull-left">
+					<h3>Settings</h3>
+				</div>
+			</div>
+			<div class="container col-md-12">
+				<div class="pull-left">
+					<h3>Bookmark Colours</h3>
+					<br>
+					<div class="col-md-6"><h4>Schedule</h4>
+					          <input
+							  	class="form-control"
+					            minicolors="customSettings"
+					            id="color-input"
+					            ng-model="schedulecolour">
+					        </div>
+							<div class="col-md-6"><h4>Courses</h4>
+									  <input
+										class="form-control"
+										minicolors="customSettings"
+										id="color-input"
+										ng-model="coursescolour">
+									</div>
+									<div class="col-md-6"><h4>Assignments</h4>
+											  <input
+												class="form-control"
+												minicolors="customSettings"
+												id="color-input"
+												ng-model="assignmentscolour">
+											</div>
+											<div class="col-md-6"><h4>Tests</h4>
+													  <input
+														class="form-control"
+														minicolors="customSettings"
+														id="color-input"
+														ng-model="testscolour">
+													</div>
+													<div class="col-md-6"><h4>GPA</h4>
+															  <input
+																class="form-control"
+																minicolors="customSettings"
+																id="color-input"
+																ng-model="gpacolour">
+															</div>
+															<div class="col-md-6"><h4>Settings</h4>
+																	  <input
+																		class="form-control"
+																		minicolors="customSettings"
+																		id="color-input"
+																		ng-model="settingscolour">
+																	</div>
+																	<div class="col-md-6"><h4>Profile</h4>
+																			  <input
+																				class="form-control"
+																				minicolors="customSettings"
+																				id="color-input"
+																				ng-model="profilecolour">
+																			</div>
+							<div class="col-md-12">
+								<h3>Grade Scheme</h3>
+							</div>
+
+
+
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+</div>
 	</body>
 </html>

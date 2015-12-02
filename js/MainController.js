@@ -1,56 +1,56 @@
 app.controller('MainCtrl', ['$scope','$modal', function ($scope,$modal) {
-	
+
 	$scope.selected = 0;
 	$scope.tabs = [
 		{
 			name: 'Schedule',
 			hidden: false,
 			value: 0
-			
+
 		},
 		{
 			name: 'Courses',
 			hidden: false,
 			value: 1
-			
+
 		},
 		{
 			name: 'Assignments',
 			hidden: false,
 			value: 2
-			
+
 		},
 		{
 			name: 'Tests',
 			hidden: false,
 			value: 3
-			
+
 		},
 		{
 			name: 'GPA',
 			hidden: false,
 			value: 4
-			
+
 		},
 		{
 			name: 'Settings',
 			hidden: false,
 			value: 5
-			
+
 		},
 		{
 			name: 'Profile',
 			hidden: false,
 			value: 6
-			
+
 		}
-	]; 
-	
+	];
+
 	$scope.setsel= function(val){
 		$scope.selected = val;
 	};
-	
-	
+
+
 	var courselist = [];
     var events = [];
     $scope.assignmentcount = 0;
@@ -116,11 +116,7 @@ app.controller('MainCtrl', ['$scope','$modal', function ($scope,$modal) {
     //     $scope.courses.splice(courses[indexOf(course)],1);
     // }
     $scope.courseopen = function(){
-        $scope.customSettings = {
-          control: 'brightness',
-          theme: 'bootstrap',
-          position: 'top left'
-        };
+
         $modal.open({
             templateUrl: 'coursemodal.html',
             animation:true,
@@ -420,7 +416,7 @@ app.controller('MainCtrl', ['$scope','$modal', function ($scope,$modal) {
         var val = grades[i].grade + val;
     }
     $scope.GPA = val/$scope.grades.length;
-	
+
     /*Calendar*/
     var date = new Date();
     var d = date.getDate();
