@@ -48,10 +48,10 @@
                <div id="right_open_book_content">
                 <div ng-if="selected==0">
                     <div class="container col-md-12">
-                        <h3>Hello, John Brown !
+                        <div id="registration_heading">Hello, John Brown !
                             <h4 class="text-right">{{assignmentcount}} Assignments Due</h4>
                         <h4 class="text-right">{{testcount}} Upcoming Tests</h4>
-					</h3>
+					</div>
                         <div class="calendar" ng-model="eventSources" calendar="calendar" config="uiConfig.calendar" ui-calendar="uiConfig.calendar"></div>
 
                         <br>
@@ -61,7 +61,7 @@
                 <div ng-if="selected==1">
                         <div class="container col-md-12">
                             <div class="pull-left">
-                                <h3>Courses</h3>
+                                <div id="registration_heading">Courses</div>
                             </div>
                             <div class="btn btn-sm btn-primary pull-right" ng-click="courseopen()"><i class="fa fa-plus"></i>
                                 Add Course
@@ -90,7 +90,7 @@
                 <div ng-if="selected==2">
                     <div class="container col-md-12">
                         <div class="pull-left">
-                            <h3>Assignments</h3>
+                            <div id="registration_heading">Assignments</div>
                         </div>
                         <div class="btn btn-sm btn-primary pull-right" ng-click="assignmentopen()"><i class="fa fa-plus"></i>
                             Add Assignment
@@ -123,7 +123,7 @@
                 <div ng-if="selected==3">
                     <div class="container col-md-12">
                         <div class="pull-left">
-                            <h3>Tests</h3>
+                            <div id="registration_heading">Tests</div>
                         </div>
                         <div class="btn btn-sm btn-primary pull-right" ng-click="testopen()"><i class="fa fa-plus"></i>
                             Add Test
@@ -157,12 +157,12 @@
                 <div ng-if="selected==4">
                     <div class="container col-md-12">
                         <div class="pull-left">
-                            <h3>GPA</h3>
+                            <div id="registration_heading">GPA</div>
                         </div>
                     </div>
                     <div class="container col-md-12">
-						<div class="pull-center text-center"><h1>4.0</h1><h4>GPA</h4></div>
-						<div class="pull-left">
+						<div class="pull-center text-center" id="registration_heading"><h1>4.0</h1><h4>GPA</h4></div>
+						<div class="pull-left" id="registration_heading">
 							<h4>Cumulative GPA: 3.7</h4>
 							<h4>Other Stats</h4>
 						</div>
@@ -176,12 +176,12 @@
 		<div ng-if="selected==5">
 			<div class="container col-md-12">
 				<div class="pull-left">
-					<h3>Settings</h3>
+					<div id="registration_heading">Settings</div>
 				</div>
 			</div>
 			<div class="container col-md-12">
 				<div class="pull-left">
-					<h3>Bookmark Colours</h3>
+					<div id="registration_heading">Bookmark Colours</div>
 					<br>
 					<div class="col-md-6"><h4>Schedule</h4>
 					          <input
@@ -232,8 +232,41 @@
 																				id="color-input"
 																				ng-model="profilecolour">
 																			</div>
-							<div class="col-md-12">
-								<h3>Grade Scheme</h3>
+							<div id="registration" class="col-md-9">
+								<div id="registration_heading">
+									Grade Scheme
+								</div>
+								<div id="registration_form" class="col-md-12" >
+								<div class="col-md-5 grade" id="gradeA" style="margin-right:10px;"><input type="text" value='A' class="form-control" disabled/><input class="form-control" type="number"/><input type="text" class="form-control"/></div>
+
+								</br>
+
+								<div class="col-md-5 grade" id="gradeB" style="margin-right:10px;"><input type="text" value='B' class="form-control" disabled/><input class="form-control" type="number"/><input class="form-control" type="text"/></div>
+
+								</br>
+
+								<div class="col-md-5 grade" id="gradeC" style="margin-right:10px;"><input type="text" value='C' class="form-control" disabled/><input
+								type="number" class="form-control"/><input class="form-control" type="text"/></div>
+
+								</br>
+
+								<div class="col-md-5 grade" id="gradeD" style="margin-right:10px;"><input type="text" value='D' class="form-control" disabled/><input
+								type="number" class="form-control"/><input type="text" class="form-control"/></div>
+
+								</br>
+
+								<div class="col-md-5 grade" id="gradeF" style="margin-right:10px;"><input type="text" value='F' class="form-control" disabled/><input
+								type="number" class="form-control"/><input type="text" class="form-control"/></div>
+								</br>
+
+
+								<div class=" col-md-6 btn btn-info">Add New</div>
+								<br>
+					<div class=" col-md-6 btn btn-success">Save</div>
+								</div>
+
+
+
 							</div>
 
 
@@ -243,14 +276,14 @@
 		</div>
 		<div ng-if="selected==6">
 			<div class="container col-md-12">
-				<div class="pull-left">
+				<div class="pull-left" id="registration_heading">
 					<h3>Profile</h3>
 				</div>
 			</div>
 			<div class="container col-md-12">
-				<div class="text-center">
-					<h3>{{fullname}}</h3>
-					<h3>{{GPA}}: 4.0</h3>
+				<div class="text-center" id="registration_heading">
+					<h3>John Brown</h3>
+					<h3>GPA: 4.0</h3>
 				</div>
 				<div class="col-md-2">
 					<span><i></i></span>
@@ -265,7 +298,7 @@
 				</div>
 				<div class="col-md-4 circle">
 					<h3><br>
-						0 Assignments Submitted
+						1 Assignments Submitted
 					</h3>
 				</div>
 				<div class="col-md-3">
@@ -273,7 +306,7 @@
 				</div>
 				<div class="col-md-5 circle">
 					<h3><br>
-						0 Upcoming Tests
+						1 Upcoming Tests
 					</h3>
 				</div>
 				<div class="col-md-6 circle">
