@@ -1,6 +1,6 @@
 #book{
-	
-	background-color: #afaf80;
+
+	background-color: #5698d5;
 	height: 100%;
 	width: 400px;
 	margin: 0 auto;
@@ -9,17 +9,19 @@
 }
 
 #lining{
-	
-	background-color: #9f9f60;
+
+	background-color: #d4c9c4;
 	height: 100%;
 	width: 4px;
 	margin-left: 7px;
 	margin-top: 0px;
 	float:left;
 }
-
+#color-input{
+	width:30px;
+}
 #content{
-	
+
 	width: 80%;
 	height: 70%;
 	overflow: hidden;
@@ -29,7 +31,7 @@
 #openbook{
 	background-color: #0b9fce;
 	margin:20px;
-	
+
 }
 
 #name{
@@ -40,47 +42,56 @@
 }
 
 #Schedule > a{
-	background-color: #67f398;
+	background-color: #e9f152;
 	border-bottom-color: #000000;
-	
+
 }
+
 .calendar{
-	width:800px;
+	width:880px;
+	background-color:white;
 }
 #GPA > a{
 	background-color: #fa9e0a;
-	
-	
 	border-bottom-color: #000000;
-	
+
 }
 
 #Tests > a{
 	background-color: #ff0ff0;
 	border-bottom-color: #000000;
-	
+
 }
 
 #Courses > a{
 	background-color: #0ff0fe;
 	border-bottom-color: #000000;
-	
+
 }
 #Assignments > a{
 	background-color: #9fdc80;
 	border-bottom-color: #000000;
-	
+
+}
+
+#Settings >a{
+	background-color: #b7beab;
+	border-bottom-color: #000000;
+}
+#Profile>a{
+	background-color: #e39d9d;
+	border-bottom-color: #000000;
 }
 
 #left_openbook{
-	
+
 	width: 200px;
 	border-right: 2px;
 	border-color: #000000;
 	float:left;
 	height: 100%;
 	padding-top: 40px;
-	
+
 }
 
 #left_openbook_pages{
@@ -96,6 +107,7 @@
 	background-color: #ffffff;
 	background-image: url("pages.png");
 }
+<<<<<<< HEAD
 
 #registration{
 	background-color: #ffffff;
@@ -146,3 +158,4 @@
 #gradeF{
 	background-color: #bf0909;
 }
+

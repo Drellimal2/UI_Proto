@@ -8,6 +8,7 @@
             courseform.coursedescription.$dirty && courseform.coursedescription.$invalid ||
             courseform.coursestart.$dirty && courseform.coursestart.$invalid ||
             courseform.courseend.$dirty && courseform.courseend.$dirty}">
+        <button type="button"  class="close" ng-click="cancel()" data-dismiss="modal" aria-hidden="true">&times;</button>
         <div class="form-group">
             <label>Course Code</label>
             <input type="text"
@@ -94,6 +95,36 @@
             class="form-control"
             type="text"
             ng-model="coursecolour">
+        </div>
+        <div class="form-group">
+            <label>Days</label>
+            <div class="input-group">
+                <input ng-model="coursedays"
+                    type="text"
+                    class="form-control"
+                    datepicker-popup="{{format}}"
+                    is-open="daysopened"
+                    datepicker-options="dateOptions"
+                    placeholder="Enter course days"
+                    close-text="Close">
+                <span class="input-group-btn">
+                   <button type="button"
+                        class="btn btn-default"
+                        ng-click="daysopencal($event)">
+                        <i class="fa fa-calendar"></i>
+                    </button>
+                </span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label>Time</label>
+            <timepicker ng-model="coursetime"
+                ng-change="changed()"
+                    hour-step="hstep"
+                    minute-step="mstep"
+                    name="coursetime"
+                    show-meridian="ismeridian">
+            </timepicker>
         </div>
     </div>
 </div>

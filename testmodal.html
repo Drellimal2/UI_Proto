@@ -8,6 +8,7 @@
             testform.testtime.$dirty && testform.testtime.$invalid ||
             testform.testdescription.$dirty && testform.testdescription.$invalid ||
             testform.state.$dirty && testform.state.$invalid}">
+        <button type="button"  class="close" ng-click="cancel()" data-dismiss="modal" aria-hidden="true">&times;</button>
         <div class="form-group">
             <label>Course Code</label>
             <select
@@ -50,6 +51,7 @@
                     name="testtime"
                     show-meridian="ismeridian">
             </timepicker>
+        </div>
         <div class="form-group">
             <label>Test Description</label>
             <input type="text"
@@ -70,6 +72,22 @@
                 class="form-control"
                 required>
             </select>
+        </div>
+        <div class="form-group">
+            <label>Grade</label>
+            <input type="number"
+                placeholder="Enter grade"
+                ng-model="testgrade"
+                name="testgrade"
+                class="form-control">
+        </div>
+        <div class="form-group">
+            <label>Weighting</label>
+            <input type="number"
+                placeholder="Enter test weight"
+                ng-model="testweight"
+                name="testweight"
+                class="form-control">
         </div>
     </div>
 </div>

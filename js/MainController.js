@@ -1,56 +1,56 @@
 app.controller('MainCtrl', ['$scope','$modal', function ($scope,$modal) {
-	
+
 	$scope.selected = 0;
 	$scope.tabs = [
 		{
 			name: 'Schedule',
 			hidden: false,
 			value: 0
-			
+
 		},
 		{
 			name: 'Courses',
 			hidden: false,
 			value: 1
-			
+
 		},
 		{
 			name: 'Assignments',
 			hidden: false,
 			value: 2
-			
+
 		},
 		{
 			name: 'Tests',
 			hidden: false,
 			value: 3
-			
+
 		},
 		{
 			name: 'GPA',
 			hidden: false,
 			value: 4
-			
+
 		},
 		{
 			name: 'Settings',
 			hidden: false,
 			value: 5
-			
+
 		},
 		{
 			name: 'Profile',
 			hidden: false,
 			value: 6
-			
+
 		}
-	]; 
-	
+	];
+
 	$scope.setsel= function(val){
 		$scope.selected = val;
 	};
-	
-	
+
+
 	var courselist = [];
     var events = [];
     $scope.assignmentcount = 0;
@@ -116,11 +116,7 @@ app.controller('MainCtrl', ['$scope','$modal', function ($scope,$modal) {
     //     $scope.courses.splice(courses[indexOf(course)],1);
     // }
     $scope.courseopen = function(){
-        $scope.customSettings = {
-          control: 'brightness',
-          theme: 'bootstrap',
-          position: 'top left'
-        };
+
         $modal.open({
             templateUrl: 'coursemodal.html',
             animation:true,
@@ -141,6 +137,19 @@ app.controller('MainCtrl', ['$scope','$modal', function ($scope,$modal) {
                         $event.stopPropagation();
                         $scope.startopened = true;
                     };
+					$scope.daystoday = function() {
+						$scope.coursedays = new Date();
+					};
+
+					$scope.daysclear = function() {
+						$scope.coursedays = null;
+					};
+
+					$scope.daysopencal = function($event) {
+						$event.preventDefault();
+						$event.stopPropagation();
+						$scope.daysopened = true;
+					};
 
                     $scope.dateOptions = {
                         formatYear: 'yy',
@@ -162,6 +171,28 @@ app.controller('MainCtrl', ['$scope','$modal', function ($scope,$modal) {
                         $event.stopPropagation();
                         $scope.endopened = true;
                     };
+					$scope.coursetime = new Date();
+
+					  $scope.hstep = 1;
+					  $scope.mstep = 15;
+
+					  $scope.options = {
+						hstep: [1, 2, 3],
+						mstep: [1, 5, 10, 15, 25, 30]
+					  };
+
+					  $scope.ismeridian = true;
+
+					  $scope.update = function() {
+						var d = new Date();
+						d.setHours( 14 );
+						d.setMinutes( 0 );
+						$scope.coursetime= d;
+					  };
+
+					  $scope.clear = function() {
+						$scope.coursetime = null;
+					  };
 
                     //Compare dates for start date and end date so that start date is less than end date
                     $scope.compareDates = function() {
@@ -184,7 +215,9 @@ app.controller('MainCtrl', ['$scope','$modal', function ($scope,$modal) {
                             description: $scope.coursedescription,
                             start: $scope.coursestart.toDateString(),
                             end: $scope.courseend.toDateString(),
-                            coursecolour: $scope.coursecolour
+                            coursecolour: $scope.coursecolour,
+							days: $scope.coursedays,
+							time: $scope.coursetime
                         });
                         courselist.push({
                             coursecode:$scope.coursecode,
@@ -231,7 +264,7 @@ app.controller('MainCtrl', ['$scope','$modal', function ($scope,$modal) {
                     $scope.courselist = courselist;
 
                     $scope.format = 'MMMM d, yyyy';
-                    $scope.options = ["Not Submitted","Submitted"];
+                    $scope.options = ["Not Completed","Not Submitted","Submitted"];
                     $scope.addAssignment = function(){
                         var today = new Date();
                         var due = $scope.assignmentdue;
@@ -420,7 +453,7 @@ app.controller('MainCtrl', ['$scope','$modal', function ($scope,$modal) {
         var val = grades[i].grade + val;
     }
     $scope.GPA = val/$scope.grades.length;
-	
+
     /*Calendar*/
     var date = new Date();
     var d = date.getDate();

@@ -7,6 +7,7 @@
             assignmentform.assignmentdate.$dirty && assignmentform.assignmentdate.$invalid ||
             assignmentform.assignmentdescription.$dirty && assignmentform.assignmentdescription.$invalid ||
             assignmentform.state.$dirty && assignmentform.state.$invalid}">
+            <button type="button"  class="close" ng-click="cancel()" data-dismiss="modal" aria-hidden="true">&times;</button>
         <div class="form-group">
             <label>Course Code</label>
             <select
@@ -60,6 +61,22 @@
                 class="form-control"
                 required>
             </select>
+        </div>
+        <div class="form-group">
+            <label>Grade</label>
+            <input type="number"
+                placeholder="Enter grade"
+                ng-model="assignmentgrade"
+                name="assignmentgrade"
+                class="form-control">
+        </div>
+        <div class="form-group">
+            <label>Weighting</label>
+            <input type="number"
+                placeholder="Enter assignment weight"
+                ng-model="assignmentweight"
+                name="assignmentweight"
+                class="form-control">
         </div>
     </div>
 </div>
