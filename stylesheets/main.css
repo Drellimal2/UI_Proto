@@ -28,7 +28,6 @@
 
 #openbook{
 	background-color: #0b9fce;
-	min-height: 700px;
 	margin:20px;
 	
 }
@@ -96,4 +95,54 @@
 	height: 95%;
 	background-color: #ffffff;
 	background-image: url("pages.png");
+}
+
+#registration{
+	background-color: #ffffff;
+	margin-top: 10px;
+	height:100%;
+}
+
+#registration_heading{
+	font-family: 'Sigmar One', cursive;
+	color: #537393;
+	font-size: 40px;
+	
+}
+
+#openbook2{
+	background-color: #0b9fce;
+	
+	margin:20px;
+	
+}
+
+.grade{
+	height: auto;
+	margin: 3px;
+	border-radius: 5px;
+	padding: 3px;
+	min-height: 35px;
+}
+
+#gradeA{
+	background-color: #0aaf4d;
+}
+
+#gradeB{
+    background-color: #afda47;
+
+}
+
+#gradeC{
+	background-color: #bfca27;
+}
+
+#gradeD{
+		background-color: #ea8347;
+	
+}
+
+#gradeF{
+	background-color: #bf0909;
 }
