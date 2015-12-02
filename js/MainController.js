@@ -301,10 +301,6 @@ app.controller('MainCtrl', ['$scope','$modal', function ($scope,$modal) {
                             state: $scope.assignmentstate,
                             colour: colour
                         });
-                        events.push({
-                           title: $scope.assignmentcourse,
-                           start: $scope.assignmentdue
-                        });
                     $modalInstance.dismiss('cancel');
                     };
             },
@@ -401,10 +397,6 @@ app.controller('MainCtrl', ['$scope','$modal', function ($scope,$modal) {
                             state: $scope.teststate,
                             colour: colour
                         });
-                        events.push({
-                           title: $scope.testcourse,
-                           start: $scope.testdue
-                        });
                     $modalInstance.dismiss('cancel');
                     };
             },
@@ -416,43 +408,6 @@ app.controller('MainCtrl', ['$scope','$modal', function ($scope,$modal) {
 
         });
     };
-    $scope.gradeopen = function(){
-        $modal.open({
-            templateUrl: 'gpamodal.html',
-            animation:true,
-            windowClass: 'modal',
-            size: 'lg',
-            controller: function($scope, $modalInstance, grades){
-
-                    $scope.courselist = courselist;
-                    $scope.gradescheme = gradescheme;
-                    var coursecolour;
-                    var coursename;
-                    $scope.addGrade = function(){
-                        if (courselist.indexOf($scope.gradecourse)){
-                            coursecolour = courselist.coursecolour;
-                            coursename = courselist.coursename;
-                        }
-                        grades.push({
-                            coursecolour : $scope.gradecourse.coursecolour,
-                            coursecode: $scope.gradecourse.coursecode,
-                            coursename: $scope.gradecourse.coursename,
-                            grade: $scope.grade
-                        });
-                    $modalInstance.dismiss('cancel');
-                    };
-            },
-            resolve: {
-                grades: function(){
-                    return $scope.grades;
-                }
-            }
-        });
-    };
-    for(i=0; i<$scope.grades.length;i++){
-        var val = grades[i].grade + val;
-    }
-    $scope.GPA = val/$scope.grades.length;
 
     /*Calendar*/
     var date = new Date();
@@ -460,7 +415,31 @@ app.controller('MainCtrl', ['$scope','$modal', function ($scope,$modal) {
     var m = date.getMonth();
     var y = date.getFullYear();
 
-    $scope.events = events;
+
+	$scope.alertOnEventClick = function( date, jsEvent, view){
+        $scope.alertMessage = (date.title + ' was clicked ');
+    };
+    /* alert on Drop */
+     $scope.alertOnDrop = function(event, delta, revertFunc, jsEvent, ui, view){
+       $scope.alertMessage = ('Event Droped to make dayDelta ' + delta);
+    };
+    /* alert on Resize */
+    $scope.alertOnResize = function(event, delta, revertFunc, jsEvent, ui, view ){
+       $scope.alertMessage = ('Event Resized to make dayDelta ' + delta);
+    };
+
+	for(var i; i<$scope.assignments.length;i++){
+		events.push({
+		   title: course,
+		   start: due
+		});
+	}
+	for(var i; i<$scope.tests.length;i++){
+		events.push({
+		   title: course,
+		   start: due
+		});
+	}
 
     /* remove event */
     $scope.remove = function(index) {
@@ -477,7 +456,11 @@ app.controller('MainCtrl', ['$scope','$modal', function ($scope,$modal) {
         uiCalendarConfig.calendars[calendar].fullCalendar('render');
       }
     };
-
+	$scope.eventRender = function( event, element, view ) {
+        element.attr({'tooltip': event.title,
+                     'tooltip-append-to-body': true});
+        $compile(element)($scope);
+    };
     /* config object */
     $scope.uiConfig = {
       calendar:{
@@ -487,11 +470,14 @@ app.controller('MainCtrl', ['$scope','$modal', function ($scope,$modal) {
           center: 'title',
           right: 'month,basicWeek,basicDay'
         },
-        eventRender: $scope.eventRender
+		eventClick: $scope.alertOnEventClick,
+eventDrop: $scope.alertOnDrop,
+eventResize: $scope.alertOnResize,
+eventRender: $scope.eventRender
       }
     };
 
     /* event sources array*/
-    $scope.eventSources = [$scope.events];
+    $scope.eventSources = events;
 
 }]);

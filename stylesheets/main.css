@@ -27,10 +27,16 @@
 	overflow: hidden;
 	margin: 0 auto;
 }
-
+.circle{
+	border-radius:50%;
+	width:200px;
+	height:200px;
+	padding-right:10px;
+	border: 2px solid #000;
+}
 #openbook{
 	background-color: #0b9fce;
-	min-height: 700px;
+	min-height: 1000px;
 	margin:20px;
 
 }
