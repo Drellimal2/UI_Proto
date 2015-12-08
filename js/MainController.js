@@ -52,7 +52,8 @@ app.controller('MainCtrl', ['$scope','$modal', function ($scope,$modal) {
 
 
 	var courselist = [];
-    var events = [];
+	var events = [];
+    // $scope.events = [];
     $scope.assignmentcount = 0;
     $scope.testcount = 0;
     $scope.username;
@@ -109,12 +110,7 @@ app.controller('MainCtrl', ['$scope','$modal', function ($scope,$modal) {
         grade:0.0
     }];
     $scope.GPA;
-    // $scope.editcourse = function(course){
-    //     $scope.courseopen();
-    // };
-    // $scope.deletecourse = function(courses,course){
-    //     $scope.courses.splice(courses[indexOf(course)],1);
-    // }
+
     $scope.courseopen = function(){
 
         $modal.open({
@@ -224,6 +220,13 @@ app.controller('MainCtrl', ['$scope','$modal', function ($scope,$modal) {
                             coursecolour:$scope.coursecolour,
                             coursename:$scope.coursename
                         });
+						events.push({
+							title:$scope.coursecode,
+							start:$scope.coursestart,
+							end:$scope.courseend,
+							color:$scope.coursecolour
+						});
+						events.splice(1,1);
                     $modalInstance.dismiss('cancel');
                     };
             },
@@ -301,6 +304,11 @@ app.controller('MainCtrl', ['$scope','$modal', function ($scope,$modal) {
                             state: $scope.assignmentstate,
                             colour: colour
                         });
+						events.push({
+							title:$scope.assignmentdescription,
+							start:$scope.assignmentdue,
+							color:$scope.assignmentcourse.coursecolour
+						});
                     $modalInstance.dismiss('cancel');
                     };
             },
@@ -386,7 +394,6 @@ app.controller('MainCtrl', ['$scope','$modal', function ($scope,$modal) {
                         if (courselist.indexOf($scope.testcourse)){
                             coursecolour = courselist.coursecolour;
                         }
-                        console.log($scope.testtime);
                         tests.push({
                             coursecolour : $scope.testcourse.coursecolour,
                             course: $scope.testcourse.coursecode,
@@ -397,6 +404,11 @@ app.controller('MainCtrl', ['$scope','$modal', function ($scope,$modal) {
                             state: $scope.teststate,
                             colour: colour
                         });
+						events.push({
+							title:$scope.testdescription,
+							start:$scope.testdue,
+							color:$scope.testcourse.coursecolour
+						});
                     $modalInstance.dismiss('cancel');
                     };
             },
@@ -415,7 +427,6 @@ app.controller('MainCtrl', ['$scope','$modal', function ($scope,$modal) {
     var m = date.getMonth();
     var y = date.getFullYear();
 
-
 	$scope.alertOnEventClick = function( date, jsEvent, view){
         $scope.alertMessage = (date.title + ' was clicked ');
     };
@@ -428,39 +439,42 @@ app.controller('MainCtrl', ['$scope','$modal', function ($scope,$modal) {
        $scope.alertMessage = ('Event Resized to make dayDelta ' + delta);
     };
 
-	for(var i; i<$scope.assignments.length;i++){
-		events.push({
-		   title: course,
-		   start: due
-		});
-	}
-	for(var i; i<$scope.tests.length;i++){
-		events.push({
-		   title: course,
-		   start: due
-		});
-	}
+	// $scope.eventClick = function(event){
+	// 	$scope.$apply(function(){
+	// 		$scope.alertMessage = (event.title + ': ' + event.start + ' to ' + event.end);
+	// 	});
+	// }
 
     /* remove event */
     $scope.remove = function(index) {
-      $scope.events.splice(index,1);
+		events.splice(index,1);
     };
+
     /* Change View */
     $scope.changeView = function(view,calendar) {
       uiCalendarConfig.calendars[calendar].fullCalendar('changeView',view);
     };
 
     /* Change View */
-    $scope.renderCalender = function(calendar) {
+    $scope.renderCalender = function(calendar,events) {
       if(uiCalendarConfig.calendars[calendar]){
         uiCalendarConfig.calendars[calendar].fullCalendar('render');
       }
     };
-	$scope.eventRender = function( event, element, view ) {
-        element.attr({'tooltip': event.title,
-                     'tooltip-append-to-body': true});
-        $compile(element)($scope);
-    };
+	// $scope.eventRender = function( event, element, view ) {
+	// 	element.attr('href', 'javascript:void(0);');
+    //     element.click(function() {
+    //         $("#startTime").html(moment(event.start).format('MMM Do h:mm A'));
+    //         $("#endTime").html(moment(event.end).format('MMM Do h:mm A'));
+    //         $("#eventInfo").html(event.description);
+    //         $("#eventLink").attr('href', event.url);
+    //         $("#eventContent").dialog({ modal: true, title: event.title, width:350});
+    //     });
+    //     element.attr({'tooltip': event.title,
+    //                  'tooltip-append-to-body': true});
+    //     $compile(element)($scope);
+    // };
+
     /* config object */
     $scope.uiConfig = {
       calendar:{
@@ -470,14 +484,18 @@ app.controller('MainCtrl', ['$scope','$modal', function ($scope,$modal) {
           center: 'title',
           right: 'month,basicWeek,basicDay'
         },
-		eventClick: $scope.alertOnEventClick,
-eventDrop: $scope.alertOnDrop,
-eventResize: $scope.alertOnResize,
-eventRender: $scope.eventRender
+		// eventClick: $scope.eventClick,
+		// eventDrop: $scope.alertOnDrop,
+		// eventResize: $scope.alertOnResize,
+		// eventRender: $scope.eventRender
       }
     };
 
     /* event sources array*/
-    $scope.eventSources = events;
+	$scope.eventSources = [];
+	$scope.$watch('$scope.eventSources',function(){
+		$scope.eventSources.push(events);
+		console.log($scope.eventSources);
+	});
 
 }]);
