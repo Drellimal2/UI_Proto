@@ -21,7 +21,6 @@
 	width:30px;
 }
 #content{
-
 	width: 80%;
 	height: 70%;
 	overflow: hidden;
@@ -114,12 +113,13 @@
 	background-color: #ffffff;
 	background-image: url("pages.png");
 }
-<<<<<<< HEAD
+
 
 #registration{
 	background-color: #ffffff;
 	margin-top: 10px;
 	height:100%;
+	background-repeat: repeat-y;
 }
 
 #registration_heading{
